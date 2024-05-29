@@ -1,6 +1,6 @@
-package com.sparta.project2.controller;
+package com.sparta.project2.dto;
 
-import com.sparta.project2.repository.Todo;
+import com.sparta.project2.entity.Todo;
 import lombok.Getter;
 import lombok.Setter;
 

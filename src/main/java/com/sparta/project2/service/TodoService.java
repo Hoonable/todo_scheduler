@@ -1,7 +1,7 @@
 package com.sparta.project2.service;
 
-import com.sparta.project2.controller.TodoRequestDTO;
-import com.sparta.project2.repository.Todo;
+import com.sparta.project2.dto.TodoRequestDTO;
+import com.sparta.project2.entity.Todo;
 import com.sparta.project2.repository.TodoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;

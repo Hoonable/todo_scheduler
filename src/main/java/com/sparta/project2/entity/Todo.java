@@ -1,4 +1,4 @@
-package com.sparta.project2.repository;
+package com.sparta.project2.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,6 +23,14 @@ public class Todo{
     private String userName;
     private String password;
     private LocalDateTime createdAt;
+
+    ////////
+    @OneToMany
+    @JoinColumn(name = "todo_id") // comment 테이블의 todo_id 컬럼
+    private List<Comment> commentList = new ArrayList<>();
+    ////////1:N연관 관계 설정
+
+
     @Builder
     public Todo(String title, String content, String userName, String password) {
         this.title = title;

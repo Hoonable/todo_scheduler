@@ -2,14 +2,15 @@ package com.sparta.project2.controller;
 
 
 import com.sparta.project2.CommonResponse;
-import com.sparta.project2.repository.Todo;
+import com.sparta.project2.dto.TodoRequestDTO;
+import com.sparta.project2.dto.TodoResponseDTO;
+import com.sparta.project2.entity.Todo;
 import com.sparta.project2.service.TodoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
