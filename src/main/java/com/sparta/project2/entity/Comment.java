@@ -19,16 +19,21 @@ public class Comment {
     private Long commentId;
 
     private String comment;
-    private Long userId;
+    private String userId;
     //private Long todoId;
     private LocalDateTime createdAt;
 
 
     @Builder
-    public Comment(String comment, Long userId, Long todoId) {
+    public Comment(String comment, String userId, Long todoId) {
         this.comment = comment;
         this.userId = userId;
         //this.todoId = todoId;
         this.createdAt = LocalDateTime.now();
+
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

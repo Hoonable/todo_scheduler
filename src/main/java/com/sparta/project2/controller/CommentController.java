@@ -7,10 +7,7 @@ import com.sparta.project2.entity.Comment;
 import com.sparta.project2.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -23,7 +20,12 @@ public class CommentController {
         Comment comment = commentService.createComment(dto);
         CommentResponseDTO response = new CommentResponseDTO(comment);
         return ResponseEntity.ok(response);
+    }
 
-
+    @PutMapping()
+    public ResponseEntity putComment(@RequestBody CommentRequestDTO dto){
+        Comment comment = comment = commentService.updateComment(dto);
+        CommentResponseDTO response = new CommentResponseDTO(comment);
+        return ResponseEntity.ok(response);
     }
 }

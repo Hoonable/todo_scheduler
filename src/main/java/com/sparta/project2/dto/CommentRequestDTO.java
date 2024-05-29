@@ -10,8 +10,10 @@ import lombok.Setter;
 public class CommentRequestDTO {
 
     private String comment;
-    private Long  userId;
+    private String  userId;
     private Long todoId;
+
+    private Long commentId;
 
 
 

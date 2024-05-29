@@ -13,7 +13,7 @@ public class CommentResponseDTO {
 
     private Long commentId;
     private String comment;
-    private Long userId;
+    private String userId;
     //private Long todoId;
     private LocalDateTime createdAt;
     public CommentResponseDTO(Comment comment) {
