@@ -35,7 +35,24 @@ public class CommentService {
     }
 
     public Comment updateComment(CommentRequestDTO dto) {
-        if(dto.getTodoId() == null||dto.getCommentId() ==null){
+        Comment comment = checkData(dto); //valid 한 데이터인지 체크하고 comment 불러오기
+
+        comment.setComment(dto.getComment()); // 댓글 내용만 수정
+
+        return commentRepository.save(comment);
+    }
+
+
+
+    public void deleteComment(CommentRequestDTO dto) {
+        Comment comment = checkData(dto); //valid 한 데이터인지 체크하고 comment 불러오기
+
+        commentRepository.delete(comment);
+
+    }
+
+    private Comment checkData(CommentRequestDTO dto) {
+        if(dto.getTodoId() == null|| dto.getCommentId() ==null){
             throw new IllegalArgumentException("Invalid request");
         }// 선택 일정이나 댓글의 ID가 입력되지 않은 경우 Exception
         Todo todo = todoRepository.findById(dto.getTodoId()).orElseThrow(IllegalArgumentException::new);
@@ -50,13 +67,7 @@ public class CommentService {
             throw new IllegalArgumentException("Invalid request");
         }
         //선택한 댓글의 사용자가 현재 사용자와 일치하지 않은 경우 Exception
-
-        comment.setComment(dto.getComment()); // 댓글 내용만 수정
-
-        return commentRepository.save(comment);
-
-
-
-
+        return comment;
     }
+
 }

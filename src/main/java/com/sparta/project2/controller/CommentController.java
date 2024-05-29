@@ -1,11 +1,13 @@
 package com.sparta.project2.controller;
 
 
+import com.sparta.project2.CommonResponse;
 import com.sparta.project2.dto.CommentRequestDTO;
 import com.sparta.project2.dto.CommentResponseDTO;
 import com.sparta.project2.entity.Comment;
 import com.sparta.project2.service.CommentService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,4 +30,16 @@ public class CommentController {
         CommentResponseDTO response = new CommentResponseDTO(comment);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping()
+    public ResponseEntity<CommonResponse> deleteComment(@RequestBody CommentRequestDTO dto){
+        commentService.deleteComment(dto);
+        return ResponseEntity.ok().body(CommonResponse.builder()
+                .msg("삭제에 성공했습니다")
+                .statusCode(HttpStatus.OK.value())
+                .build());
+
+
+    }
+
 }
