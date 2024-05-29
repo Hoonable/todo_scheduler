@@ -1,6 +1,7 @@
 package com.sparta.project2.service;
 
 
+import com.sparta.project2.dto.CommentPostRequestDTO;
 import com.sparta.project2.dto.CommentRequestDTO;
 import com.sparta.project2.entity.Comment;
 import com.sparta.project2.entity.Todo;
@@ -18,10 +19,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final TodoRepository todoRepository;
 
-    public Comment createComment(CommentRequestDTO dto){
-        if(dto.getTodoId() == null||dto.getComment() ==null){
-            throw new IllegalArgumentException("Invalid request");
-        }// 선택 일정의 ID를 입력하지 않거나 댓글 내용 비어 있는경우 Exception
+    public Comment createComment(CommentPostRequestDTO dto){
 
         var newComment = dto.toEntity();
         Todo todo = todoRepository.findById(dto.getTodoId()).orElseThrow(IllegalArgumentException::new);
@@ -52,9 +50,7 @@ public class CommentService {
     }
 
     private Comment checkData(CommentRequestDTO dto) {
-        if(dto.getTodoId() == null|| dto.getCommentId() ==null){
-            throw new IllegalArgumentException("Invalid request");
-        }// 선택 일정이나 댓글의 ID가 입력되지 않은 경우 Exception
+
         Todo todo = todoRepository.findById(dto.getTodoId()).orElseThrow(IllegalArgumentException::new);
         //선택 일정이 DB에 없는경우 Exception
 
