@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/todo/comment")
+@RequestMapping("/comment")
 public class CommentController {
     public final CommentService commentService;
 
