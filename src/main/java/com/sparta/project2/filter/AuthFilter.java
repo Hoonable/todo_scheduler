@@ -27,7 +27,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String url = httpServletRequest.getRequestURI();
         if (StringUtils.hasText(url) &&
-                (url.startsWith("/todo")||url.startsWith("/auth"))
+                (url.startsWith("/todo")||url.startsWith("/auth")||url.startsWith("/user"))
         ) {
             log.info("인증 처리 하지 않는 URL");
             chain.doFilter(request, response);
