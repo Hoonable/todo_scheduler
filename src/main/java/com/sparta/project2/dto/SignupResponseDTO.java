@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class UserResponseDTO {
+public class SignupResponseDTO {
 
     private Long id;
     private String username;
@@ -18,7 +18,7 @@ public class UserResponseDTO {
     private UserRoleEnum role;
     private LocalDateTime createdAt;
 
-    public UserResponseDTO(User user) {
+    public SignupResponseDTO(User user) {
         this.id = user.getId();
         this.username = user.getUsername();
         this.nickname = user.getNickname();

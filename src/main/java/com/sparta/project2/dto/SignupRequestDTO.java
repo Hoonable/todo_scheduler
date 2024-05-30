@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserRequestDTO {
+public class SignupRequestDTO {
 
     @Size(min=4, max=10)
     @Pattern(regexp = "^[a-z0-9]*$")

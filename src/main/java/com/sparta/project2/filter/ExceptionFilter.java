@@ -6,12 +6,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.View;
 
 import java.io.IOException;
 
 @Component
 @Order(1)
 public class ExceptionFilter implements Filter {
+
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException {
@@ -26,8 +28,9 @@ public class ExceptionFilter implements Filter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
 
             httpResponse.setStatus(400);
-            String jsonErrorMessage = String.format("{\"error\": \"%s\"}", e.getMessage());
-            httpResponse.setCharacterEncoding("UTF-8"); // 한글 출력 가능하도록
+            String[] errorMessage = e.getMessage().split("/");
+            String jsonErrorMessage = String.format("{\"error\": \"%s\"}", errorMessage[errorMessage.length-1]);
+            httpResponse.setCharacterEncoding("UTF-8"); // 한글 출력 가능
             httpResponse.getWriter().write(jsonErrorMessage);
 
         }
